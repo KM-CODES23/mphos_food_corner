@@ -144,10 +144,10 @@
     position: relative;
     z-index: 2;
 }
-.learn-section-title{
+.welcome-section-title{
     font-size: 32px;
-    color: #013F4E;
-    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    background-color: rgb(228, 72, 72);
     margin-top: 50px;
     margin-bottom: 20px;
 }
@@ -170,4 +170,95 @@
 .welcome-section-btn:hover{
     background-color: #ea2425;
     color: #fff;
+}
+
+/* footer section */
+footer{
+    background-color: #ea2425;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 40px 80px;
+}
+footer .col{
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    margin-top: 2px;
+    
+   }
+   footer .logo{
+    
+    width: 200px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+footer .logo:hover{
+    transform: scale(1.1);
+}
+
+   
+   footer .col h4{
+    color: white;
+       font-size: 14px;
+       padding-bottom: 20px;
+      
+   }
+   footer a{
+       font-size: 13px;
+       text-decoration: none;
+       color: #013F4E;
+       margin: 0 0 8px 0;
+       
+   }
+   footer .follow{
+    margin-top: 20px
+}
+footer .follow a{
+    color: #013F4E;
+    padding-right: 4px;
+    cursor: pointer;
+    background: transparent;
+}
+footer .follow a:hover,
+    footer a:hover{
+        
+        background-color: rgba(255, 255,255, 0.2);   
+    color: white;
+  
+}
+footer .payments img{
+    height: 20vh;
+}
+footer .footer-copyright{
+   width: 100%;
+   text-align: center;
+}
+footer .footer-link{
+    width: 100%;
+   text-align: center;
+    color: #013F4E;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+@media (max-width: 768px){
+    .footer-link {
+        margin-bottom: 10px;
+    }
+    .footer-link a{
+        display: block;
+        margin: 5px 0;
+    }
+    .follow a{
+        font-size: 18px;
+        margin: 5px;
+    }
+    .footer-about{
+        margin-bottom: 10px;
+    }
 }
