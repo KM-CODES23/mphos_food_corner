@@ -1,0 +1,173 @@
+/* --- Navbar Container --- */
+.navbar {
+  background-color: #FFFFF0;
+  border-bottom: 2px solid #cf525c;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 10px 40px;
+}
+
+/* --- Flex layout for the navbar --- */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --- Logo --- */
+.navbar-logo {
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.1);
+}
+
+/* --- Navbar links --- */
+.navbar-links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px; /* reduced from 25px */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  font-size: 15px; /* slightly smaller */
+  padding: 10px 2px;
+}
+
+.navbar-left {
+  flex: 1; /* logo takes minimal width */
+}
+.navbar-right {
+  flex: 2; /* links get more space */
+  display: flex;
+  justify-content: flex-start;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #cf525c;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ea2425;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* --- Responsive layout --- */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  .navbar-logo {
+    width: 100px;
+  }
+}
+
+
+/* --- Homepage --- */
+.welcome-section {
+    height: 100vh; /* ✅ fills the full screen vertically */
+  width: 240vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
+  display: flex;              /* ✅ centers content nicely */
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  animation: slideshow 15s infinite linear;
+  transition: background-image 1s ease-in-out;
+}
+/* 🎞️ Keyframes for background image change */
+@keyframes slideshow {
+  0% {
+    background-image: url('../src/assets/img_1.jpg');
+    
+    
+  }
+  33% {
+    background-image: url('../src/assets/img_2.jpg');
+    
+    
+  }
+  66% {
+    background-image: url('../src/assets/img_3.jpg');
+    
+    
+  }
+  100% {
+    background-image: url('../src/assets/img_1.jpg');
+    
+   
+  }
+}
+
+.welcome-section::before {
+  content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0.1, 0.1, 0.1, 0.1);
+    z-index: 1;
+}
+
+.container{
+    position: relative;
+    z-index: 2;
+}
+.learn-section-title{
+    font-size: 32px;
+    color: #013F4E;
+    background-color: rgba(0, 0, 0, 0.9);
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.section-description{
+    font-size: 18px;
+    color: white;
+    margin-bottom: 30px;
+}
+.welcome-section-btn{
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #cf525c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+}
+.welcome-section-btn:hover{
+    background-color: #ea2425;
+    color: #fff;
+}
