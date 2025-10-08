@@ -5,6 +5,7 @@ import './App.css'
 import NavBar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import Homepage from './pages/Homepage.jsx';
+import Menupage from './pages/Menupage.jsx';
 
 function App() {
   
@@ -17,6 +18,7 @@ function App() {
 
       <Routes>
         <Route path='/' element={<Homepage/>}/>
+        <Route path='*' element={<Menupage/>}/>
       </Routes>
       <Footer/>
       </div>

@@ -2,8 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import '../styles.css'
 import logo from '../assets/logo.jpg'
+
+import Categories from '../components/Categories.jsx'
+import Menu from '../pages/Menupage.jsx'
+
 const Homepage = () => {
   return (
+    <>
     <section className='welcome-section'>
         <div className='container'>
             <img src={logo} alt="Mpho's Food Corner" className='navbar-logo' />
@@ -14,6 +19,10 @@ const Homepage = () => {
 
     </section>
 
+<Categories/>
+<Menu/>
+
+</>
   )
 }
 
