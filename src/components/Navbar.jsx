@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles.css';
 import logo from '../assets/logo.jpg';
 import { Link } from 'react-router-dom';
@@ -6,7 +6,15 @@ import { FaShoppingCart } from 'react-icons/fa';
 
 const Navbar = () => {
   // --- Simulated login state ---
-  const isLoggedIn = false; // change this to false to test the other state
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  useEffect(() => {
+    const user = localStorage.getItem('user'); // stored after login
+    setIsLoggedIn(!!user);
+  }, []);
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    setIsLoggedIn(false);
+  };
 
   return (
     <nav className="navbar">
@@ -32,9 +40,9 @@ const Navbar = () => {
 
           {/* Show these buttons only when user is NOT logged in */}
           {!isLoggedIn && (
-            <>
-              <button className="login-button">Login</button>
-              <button className="signup-button">Sign Up</button>
+             <>
+              <Link to="/login"><button className="login-button">Login</button></Link>
+              <Link to="/signup"><button className="signup-button">Sign Up</button></Link>
             </>
           )}
 
@@ -45,6 +53,9 @@ const Navbar = () => {
               <Link to="/cart" className="cart-icon">
                 <FaShoppingCart size={22} />
               </Link>
+              <button className="logout-button" onClick={handleLogout}>
+                Logout
+              </button>
             </>
               
             )}
