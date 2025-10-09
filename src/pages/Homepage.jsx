@@ -6,6 +6,7 @@ import logo from '../assets/logo.jpg'
 import Categories from '../components/Categories.jsx'
 import Menu from '../pages/Menupage.jsx'
 
+
 const Homepage = () => {
   return (
     <>

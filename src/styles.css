@@ -48,10 +48,28 @@
 .navbar-left {
   flex: 1; /* logo takes minimal width */
 }
+.navbar-center {
+  flex: 2; /* links get more space */
+  display: flex;
+  justify-content: flex-start;
+}
 .navbar-right {
   flex: 2; /* links get more space */
   display: flex;
   justify-content: flex-start;
+}
+.order-now-button, .login-button, .signup-button {
+  background-color: #ea2425;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-left: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.order-now-button:hover, .login-button:hover, .signup-button:hover {
+  background-color: #cf525c;
 }
 
 .nav-link {
