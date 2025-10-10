@@ -10,16 +10,16 @@
   padding: 10px 40px;
 }
 
-/* --- Flex layout for the navbar --- */
 .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 /* --- Logo --- */
 .navbar-logo {
-  width: 50px;
+  width: 60px;
   height: auto;
   object-fit: contain;
   transition: transform 0.3s ease;
@@ -34,10 +34,11 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 15px; /* reduced from 25px */
+  gap: 15px; 
   list-style: none;
   margin: 0;
   padding: 0;
+  flex-wrap: wrap;
 }
 
 .nav-link {
@@ -88,22 +89,44 @@
 }
 
 /* --- Responsive layout --- */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .navbar-container {
     flex-direction: column;
-    align-items: center;
+    gap: 10px;
   }
 
   .navbar-links {
     flex-direction: column;
-    gap: 15px;
-    margin-top: 10px;
+    gap: 10px;
+    width: 100%;
+    text-align: center;
   }
 
   .navbar-logo {
-    width: 100px;
+    width: 80px; /* smaller on tablets */
   }
 }
+
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 10px;
+  }
+
+  .navbar-logo {
+    width: 60px;
+  }
+
+  .nav-link {
+    font-size: 14px;
+    padding: 6px 8px;
+  }
+
+  .order-now-button, .login-button, .signup-button, .logout-button {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+}
+
 .logout-button {
   background-color: #cf525c;
   color: white;
@@ -122,15 +145,15 @@
 
 /* --- Homepage --- */
 .welcome-section {
-    height: 100vh; /* ✅ fills the full screen vertically */
-  width: 240vh;
+  height: 100vh; 
+  width: 100%;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
   color: white;
   text-align: center;
-  display: flex;              /* ✅ centers content nicely */
+  display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -209,9 +232,10 @@ footer{
     background-color: #ea2425;
     color: white;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 40px 80px;
+    padding: 40px 10%;
 }
 footer .col{
     color: whitesmoke;
@@ -278,74 +302,86 @@ footer .footer-link{
     border-radius: 5px;
     transition: color 0.3s ease, background-color 0.3s ease;
 }
-@media (max-width: 768px){
-    .footer-link {
-        margin-bottom: 10px;
-    }
-    .footer-link a{
-        display: block;
-        margin: 5px 0;
-    }
-    .follow a{
-        font-size: 18px;
-        margin: 5px;
-    }
-    .footer-about{
-        margin-bottom: 10px;
-    }
+@media (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  footer .col {
+    margin-bottom: 20px;
+    align-items: center;
+  }
+
+  footer .logo {
+    width: 150px;
+  }
+
+  footer .payments img {
+    height: auto;
+    max-width: 80%;
+  }
 }
 
 /* --- Categories --- */
 .categories-section {
-   width: 100%;
-  height: 100%;
-
-  margin: auto;
-  margin-top: 10px;
- 
+  width: 100%;
+  margin: 10px auto;
 }
 .categories-section .h4{
-  margin-bottom: -50px;
+ 
   align-items: center;
   justify-content: space-between;
 }
 
-
-
-.categories-section .categories-container{
+.categories-section .categories-container {
   width: 100%;
-    height: 70vh;
-   
-     
-    display: flex;
-    align-items: center;
-    overflow-x: auto;
-    
+  height: 70vh;
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding: auto 0;
 }
 
-.categories-section .categories-container::-webkit-scrollbar{
+.categories-section .categories-container::-webkit-scrollbar {
   display: none;
 }
 
-.categories-section .categories-container li{
+.categories-section .categories-container li {
   list-style-type: none;
-    min-width: 100px;
-    height: 100px;
-    margin-right: 10px;
-    transition: .3s linear;
+  min-width: 120px;
+  height: 120px;
+  margin-right: 10px;
+  transition: 0.3s linear;
 }
-.categories-section .categories-container li img{
-   width: 200px;
+
+.categories-section .categories-container li img {
+  width: 200px;
   height: 200px;
+  align-items: center;
+  object-fit: cover;
 }
-.categories-section .categories-container li h3{
-  padding: 0px 0px 0px 5px;
+
+.categories-section .categories-container li h3 {
+  padding: 5px;
   line-height: 15px;
-  font-size: 12px;
+  font-size: 15px;
+}
+@media (max-width: 768px) {
+  .categories-section .categories-container li img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .categories-section .categories-container li h3 {
+    font-size: 10px;
+  }
 }
 
 /* --- Auth Pages --- */
 .auth-container {
+  padding: 20px;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -360,7 +396,7 @@ footer .footer-link{
   padding: 40px 50px;
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  width: 100%;
+  width: 90%;
   max-width: 400px;
   text-align: center;
 }
@@ -373,6 +409,8 @@ footer .footer-link{
 }
 
 .auth-form input {
+  width: 100%;
+  box-sizing: border-box;
   padding: 12px;
   border: 1px solid #ddd;
   border-radius: 6px;
