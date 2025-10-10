@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import './App.css'
@@ -10,17 +10,23 @@ import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
 
 function App() {
-  
+  const [user, setUser] = useState(null);
+    // 🔹 Check localStorage for logged-in user
+  useEffect(() => {
+    const savedUser = localStorage.getItem("user");
+    if (savedUser) setUser(JSON.parse(savedUser));
+  }, []);
 
   return (
     <>
       <Router>
+      <NavBar user={user} setUser={setUser} />
       <div className='App'>
-      <NavBar/>
+      
 
       <Routes>
         <Route path='/' element={<Homepage/>}/>
-        <Route path='*' element={<Menupage/>}/>
+        <Route path='/menu' element={<Menupage/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>

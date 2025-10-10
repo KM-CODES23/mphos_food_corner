@@ -1,27 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import '../styles.css';
-import logo from '../assets/logo.jpg';
-import { Link } from 'react-router-dom';
-import { FaShoppingCart } from 'react-icons/fa';
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
+import logo from "../assets/logo.jpg";
+import "../styles.css";
 
 const Navbar = () => {
-  // --- Simulated login state ---
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // 🔹 Check login status on mount
   useEffect(() => {
-    const user = localStorage.getItem('user'); // stored after login
+    const user = localStorage.getItem("user");
     setIsLoggedIn(!!user);
   }, []);
+
+  // 🔹 Handle logout
   const handleLogout = () => {
-    localStorage.removeItem('user');
+    localStorage.removeItem("user");
     setIsLoggedIn(false);
+    navigate("/login"); // Redirect to login after logout
   };
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        {/* --- Logo --- */}
-        <div className="navbar-left">
-          <img src={logo} alt="mpho's food corner" className="navbar-logo" />
+        {/* --- Logo Section --- */}
+        <div className="navbar-left" onClick={() => navigate("/")}>
+          <img src={logo} alt="Mpho's Food Corner" className="navbar-logo" />
         </div>
 
         {/* --- Center Links --- */}
@@ -36,20 +41,24 @@ const Navbar = () => {
 
         {/* --- Right Section --- */}
         <div className="navbar-right">
-          
-
           {/* Show these buttons only when user is NOT logged in */}
-          {!isLoggedIn && (
-             <>
-              <Link to="/login"><button className="login-button">Login</button></Link>
-              <Link to="/signup"><button className="signup-button">Sign Up</button></Link>
-            </>
-          )}
-
-          {/* Show cart only when user IS logged in */}
-          {isLoggedIn && (
+          {!isLoggedIn ? (
             <>
-              <button className="order-now-button">Order Now</button>
+              <Link to="/login">
+                <button className="login-button">Login</button>
+              </Link>
+              <Link to="/signup">
+                <button className="signup-button">Sign Up</button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <button
+                className="order-now-button"
+                onClick={() => navigate("/menu")}
+              >
+                Order Now
+              </button>
               <Link to="/cart" className="cart-icon">
                 <FaShoppingCart size={22} />
               </Link>
@@ -57,8 +66,7 @@ const Navbar = () => {
                 Logout
               </button>
             </>
-              
-            )}
+          )}
         </div>
       </div>
     </nav>

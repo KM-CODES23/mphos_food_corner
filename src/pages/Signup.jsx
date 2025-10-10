@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../styles.css";
 
 const Signup = () => {
@@ -8,20 +9,45 @@ const Signup = () => {
     name: "",
     email: "",
     password: "",
+    role: "Student",
   });
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError("");
 
-    // ✅ Simulate account creation
-    localStorage.setItem("user", JSON.stringify(formData));
-    navigate("/");
-    window.location.reload(); // update navbar
+    try {
+      // 🔗 Connect to your ASP.NET Core backend
+      const response = await axios.post(
+        "https://localhost:7246/api/users/register", // change to your actual backend URL
+        formData
+      );
+
+      if (response.status === 201 || response.status === 200) {
+        alert("✅ Account created successfully!");
+        localStorage.setItem("user", JSON.stringify(response.data));
+        navigate("/");
+        window.location.reload(); // update navbar
+      }
+    } catch (err) {
+      console.error("Signup failed:", err);
+      if (err.response?.status === 400) {
+        setError("⚠️ Email already exists or invalid data.");
+      } else {
+        setError("❌ Server error. Please try again later.");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -48,12 +74,22 @@ const Signup = () => {
           <input
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="Password (min 8 characters)"
             value={formData.password}
             onChange={handleChange}
             required
+            minLength={8}
           />
-          <button type="submit" className="auth-btn">Sign Up</button>
+
+          {error && <p className="error-text">{error}</p>}
+
+          <button
+            type="submit"
+            className="auth-btn"
+            disabled={loading}
+          >
+            {loading ? "Creating..." : "Sign Up"}
+          </button>
         </form>
         <p>
           Already have an account?{" "}
