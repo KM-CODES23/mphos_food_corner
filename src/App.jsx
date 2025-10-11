@@ -12,6 +12,8 @@ import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
 import AdminOrders from "./pages/AdminOrders.jsx";
 import AdminMenu from "./pages/AdminMenu";
+import Contact from "./pages/Contact.jsx";
+import About from "./pages/About.jsx";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -37,6 +39,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/admin/orders" element={<AdminOrders />} />
         <Route path="/admin/menu" element={<AdminMenu />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
 
       </Routes>
       <Footer/>

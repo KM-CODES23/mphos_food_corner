@@ -1647,3 +1647,149 @@ button:disabled {
   }
 }
 
+/* 📘 ABOUT PAGE */
+.about-wrapper {
+  background-color: #FFFFF0;
+  color: #111;
+  padding: 60px 20px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.about-hero {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.about-hero h1 {
+  font-size: 2.5rem;
+  color: #ea2425;
+  margin-bottom: 1rem;
+}
+
+.about-hero p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.about-card {
+  background-color: white;
+  border: 2px solid #cf525c;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  background-color: #fff7f7;
+  border-color: #ea2425;
+}
+
+.about-card h2 {
+  color: #ea2425;
+  margin-bottom: 0.8rem;
+}
+
+.about-card p {
+  color: #333;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* 💌 CONTACT PAGE */
+.contact-wrapper {
+  background-color: #FFFFF0;
+  padding: 60px 20px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.contact-header {
+  margin-bottom: 2rem;
+}
+
+.contact-header h1 {
+  font-size: 2.4rem;
+  color: #ea2425;
+  margin-bottom: 0.6rem;
+}
+
+.contact-header p {
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 2px solid #cf525c;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form label {
+  display: block;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 0.4rem;
+  text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  background-color: #FFFFF0;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #ea2425;
+  box-shadow: 0 0 0 3px rgba(234, 36, 37, 0.1);
+}
+
+.contact-btn {
+  background-color: #ea2425;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-btn:hover {
+  background-color: #cf525c;
+}
+
+/* 📱 Responsive */
+@media (max-width: 700px) {
+  .about-hero h1,
+  .contact-header h1 {
+    font-size: 2rem;
+  }
+
+  .about-card,
+  .contact-form {
+    padding: 1.5rem;
+  }
+}
