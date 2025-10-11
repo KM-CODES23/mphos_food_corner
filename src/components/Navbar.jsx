@@ -8,6 +8,9 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const user = JSON.parse(localStorage.getItem('user') || 'null');
+
+
   // 🔹 Check login status on mount
   useEffect(() => {
     const user = localStorage.getItem("user");
@@ -65,6 +68,15 @@ const Navbar = () => {
               <button className="logout-button" onClick={handleLogout}>
                 Logout
               </button>
+              {user?.role === "Admin" && (
+                <>
+                  <Link to="/admin/orders" className="nav-link admin-link">
+                    Admin
+                  </Link>
+                  <Link to="/admin/menu" className="nav-link admin-link">Admin Menu</Link>
+                </>
+              )}
+
             </>
           )}
         </div>

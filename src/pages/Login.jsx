@@ -22,7 +22,7 @@ const Login = () => {
     try {
       // 🔗 Connect to your ASP.NET Core backend
       const response = await axios.post(
-        "https://localhost:7246/api/users/login", // update to your backend URL
+        "https://localhost:7246/api/users/login",
         formData
       );
 

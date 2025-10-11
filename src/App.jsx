@@ -6,8 +6,12 @@ import NavBar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import Homepage from './pages/Homepage.jsx';
 import Menupage from './pages/Menupage.jsx';
+import CartPage from "./pages/CartPage.jsx";
+import OrdersPage from "./pages/OrdersPage.jsx";
 import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
+import AdminOrders from "./pages/AdminOrders.jsx";
+import AdminMenu from "./pages/AdminMenu";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -27,8 +31,13 @@ function App() {
       <Routes>
         <Route path='/' element={<Homepage/>}/>
         <Route path='/menu' element={<Menupage/>}/>
+        <Route path="/cart" element={<CartPage/>}/>
+        <Route path="/orders" element={<OrdersPage/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/admin/orders" element={<AdminOrders />} />
+        <Route path="/admin/menu" element={<AdminMenu />} />
+
       </Routes>
       <Footer/>
       </div>
