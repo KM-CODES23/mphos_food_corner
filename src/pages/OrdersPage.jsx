@@ -65,6 +65,24 @@ const OrdersPage = () => {
                   📅 Placed on: {new Date(order.date).toLocaleDateString()}
                 </p>
               </div>
+<button
+  className="remove-btn"
+  onClick={async () => {
+    if (!window.confirm("Cancel this order?")) return;
+    try {
+      await axios.delete(`http://localhost:7246/api/order/${order.id}`);
+      setOrders(orders.filter((o) => o.id !== order.id));
+      alert("Order canceled.");
+    } catch (err) {
+      console.error("Cancel failed:", err);
+      alert("Failed to cancel order.");
+    }
+  }}
+>
+  Cancel Order
+</button>
+
+
             </div>
           ))}
         </div>

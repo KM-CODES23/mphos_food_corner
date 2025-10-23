@@ -50,7 +50,30 @@ const AdminOrders = () => {
               </div>
               <div>
                 <p><strong>Total:</strong> R{order.total.toFixed(2)}</p>
-                <p><strong>Status:</strong> {order.status}</p>
+                <select
+  value={order.status}
+  onChange={async (e) => {
+    try {
+      await axios.put(
+        `http://localhost:7246/api/order/${order.id}/status`,
+        JSON.stringify(e.target.value),
+        { headers: { "Content-Type": "application/json" } }
+      );
+      setOrders((prev) =>
+        prev.map((o) =>
+          o.id === order.id ? { ...o, status: e.target.value } : o
+        )
+      );
+    } catch {
+      alert("Failed to update status");
+    }
+  }}
+>
+  <option>Pending</option>
+  <option>Ready for Collection</option>
+  <option>Collected</option>
+</select>
+
                 <div style={{marginTop:8}}>
                   {order.status !== "Ready for Collection" && (
                     <button onClick={() => updateStatus(order.id, "Ready for Collection")}>Mark Ready</button>
